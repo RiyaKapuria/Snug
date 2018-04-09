@@ -1,5 +1,5 @@
 # Snug
-Company Leave Managerment and Project Manegement Application using ReactJs and ROR. And AdminLTE has been used for design.
+Chat Application using ReactJs and Redux. And AdminLTE has been used for design.
 
 To run the project :
 $ git clone git@github.com:RiyaKapuria/Orion.git
