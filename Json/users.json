@@ -1,0 +1,25 @@
+{
+"users": [
+           {
+             "id": 1,
+             "firstname": "Riya",
+             "lastname": "Kapuria",
+             "number": 999999999,
+             "contacts": [2,3]
+           },
+          {
+             "id": 2,
+             "firstname": "Stanley",
+             "lastname": "george",
+             "number": 8888888888,
+             "contacts": [1,3]
+           },
+          {
+             "id": 3,
+             "firstname": "Muneer",
+             "lastname": "PP",
+             "number": 7777777777,
+             "contacts": [1,2]
+           }
+  ]
+}
