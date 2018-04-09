@@ -1,4 +1,4 @@
-# Orion
+# Snug
 Company Leave Managerment and Project Manegement Application using ReactJs and ROR. And AdminLTE has been used for design.
 
 To run the project :
