@@ -15,8 +15,9 @@ class SideBar extends Component {
     this.props.chatDetails()
   }
   render() {
-    let chat_details = (this.props.chatDetailsReducer && this.props.chatDetailsReducer.chat_details) ?
-    this.props.chatDetailsReducer.chat_details.users[0] : [];
+    let chat_details = (this.props.chatReducer && this.props.chatReducer.chat_details) ?
+    this.props.chatReducer.chat_details.users : [];
+    let fridens = this.props.chatReducer.chat_details.users[0].contacts;
     return (
       <aside className="main-sidebar" style={{bottom: "0 !important"}}>
         <section className="sidebar" style={{height: "auto"}}>
@@ -25,7 +26,7 @@ class SideBar extends Component {
               <img src="dist/img/avatar2.png" className="img-circle" alt="User" />
             </div>
             <div className="pull-left info">
-              <p>{chat_details.firstname} {chat_details.lastname}</p>
+              <p>{chat_details[0].firstname} {chat_details[0].lastname}</p>
               <a href="#"><i className="fa fa-circle text-success"></i> Signed In</a>
             </div>
           </div>
@@ -41,18 +42,24 @@ class SideBar extends Component {
           </form>
           <ul className="sidebar-menu tree" data-widget="tree">
             <li className="header">MAIN NAVIGATION</li>
+              <li className="treeview">
+                <a href="#">
+                  <i className="fa fa-user"></i> <span> My Contacts</span>
+                    <span className="pull-right-container">
+                      <span className="label label-primary pull-right">2</span>
+                    </span>
+                </a>
+                <ul className="treeview-menu">
+                {fridens.map((values,key) => {
+                  return(
+                  <li key={key}><Link to="/Chats"><i className="fa fa-circle-o"></i> {values}</Link></li>
+                  )
+                })}
+                </ul>
+              </li>
             <li>
               <Link to="/New_Message">
                 <i className="fa fa-dashboard"></i> <span> New Message</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/Chats">
-                <i className="fa fa-user"></i>
-                <span> Chats</span>
-                <span className="pull-right-container">
-                  <span className="label label-primary pull-right">2</span>
-                </span>
               </Link>
             </li>
           </ul>
@@ -64,7 +71,7 @@ class SideBar extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    chatDetailsReducer: state.chatDetailsReducer
+    chatReducer: state.chatReducer
   };
 };
 

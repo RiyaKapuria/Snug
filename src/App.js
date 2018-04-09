@@ -30,8 +30,8 @@ class App extends Component {
 
   render() {
     let classTheme = (Cookies.get('theme')) ? this.state.theme : "skin-purple" ;
-    let chat_details = (this.props.chatDetailsReducer && this.props.chatDetailsReducer.chat_details) ?
-    this.props.chatDetailsReducer.chat_details.user : [];
+    let chat_details = (this.props.chatReducer && this.props.chatReducer.chat_details) ?
+    this.props.chatReducer.chat_details.user : [];
     return (
       <div>
         { chat_details ?
@@ -52,7 +52,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    chatDetailsReducer: state.chatDetailsReducer
+    chatReducer: state.chatReducer
   };
 };
 

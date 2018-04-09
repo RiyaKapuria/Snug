@@ -4,14 +4,12 @@ import Cookies from 'js-cookie';
 
 export function chatDetails() {
   return (dispatch) => {
-   dispatch({type: "chat_details"});
-   ApiCall.getApiCall()
-    .then((response) => {
-      dispatch({type: "chat_details", payload: response});
-      console.log("action:", response);
-    })
-    .catch((error) => {
-      dispatch({type: "chat_details", payload: error});
-    })
+   dispatch({type: "chat_details", payload: ApiCall.getChat()});
+  }
+}
+
+export function conversationDetails() {
+  return (dispatch) => {
+   dispatch({type: "conversation_details", payload: ApiCall.getConversation()});
   }
 }

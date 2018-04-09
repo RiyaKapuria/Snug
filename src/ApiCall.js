@@ -1,32 +1,13 @@
-import MyJson from './Json/users.json';
+import MyUser from './Json/users.json';
+import MyConversation from './Json/messages.json';
+
 const ApiCalls = {
 
-  getApiCall() {
-    alert(MyJson)
-    console.log(MyJson)
-    // let base_url = "./Json/users.json";
-    // return fetch(base_url, {
-    //   method: "GET",
-    //   dataType: 'json',
-    // })
-    // .then(function(response) {
-    //   alert("ok")
-    //   if (response.ok) {
-    //     alert(response);
-    //     console.log(JSON.parse(MyJson));
-    //     console.log(response);
-    //     return response.json();
-    //   } else {
-    //     var error = new Error(response.statusText);
-    //     console.log(response);
-    //     error.response = response;
-    //     throw error;
-    //   }
-    // })
-    // .then(function(json) {
-    //   return json;
-    //  })
-
+  getChat() {
+    return(MyUser)
+  },
+  getConversation() {
+    return(MyConversation)
   },
 
   postApiCall(url, input) {

@@ -12,8 +12,8 @@ class ProfileTab extends Component {
   }
 
    render() {
-    let chat_details = (this.props.chatDetailsReducer && this.props.chatDetailsReducer.chat_details.users) ?
-    this.props.chatDetailsReducer.chat_details.users : [];
+    let chat_details = (this.props.chatReducer && this.props.chatReducer.chat_details.users) ?
+    this.props.chatReducer.chat_details.users[0] : [];
     return (
       <li className="dropdown user user-menu">
         <a href="/" className="dropdown-toggle" data-toggle="dropdown">
@@ -30,7 +30,7 @@ class ProfileTab extends Component {
           </li>
           <li className="user-footer">
             <div className="pull-left">
-              <Link to="/chatDetails" className="btn btn-default btn-flat">Profile</Link>
+              <Link to="/Chats" className="btn btn-default btn-flat">Profile</Link>
             </div>
           </li>
         </ul>
@@ -41,7 +41,7 @@ class ProfileTab extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    chatDetailsReducer: state.chatDetailsReducer
+    chatReducer: state.chatReducer
   };
 };
 

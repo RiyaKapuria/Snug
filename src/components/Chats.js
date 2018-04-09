@@ -8,20 +8,20 @@ import { chatDetails } from '../actions/chat_action';
 
 class Chats extends Component {
   componentWillMount() {
-    this.props.chatDetails()
+    this.props.chatDetails();
    }
 
   render() {
     let chat_details =
-    (this.props.chatDetailsReducer && this.props.chatDetailsReducer.chat_details) ?
-    this.props.chatDetailsReducer.chat_details.users[0] : [];
+    (this.props.chatReducer && this.props.chatReducer.chat_details) ?
+    this.props.chatReducer.chat_details.users[0] : [];
     return (
       <div>
         { chat_details.length <= 0 ?
           <PageLoading />
           :
           <div>
-           chat_details.firstname
+           <p>{chat_details.firstname}</p>
           </div>
          }
        </div>
@@ -31,7 +31,7 @@ class Chats extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    chatDetailsReducer: state.chatDetailsReducer
+    chatReducer: state.chatReducer
   };
 };
 

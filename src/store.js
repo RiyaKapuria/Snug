@@ -3,11 +3,11 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise-middleware';
 
-import chatDetailsReducer from './reducers/chat_reducer';
+import chatReducer from './reducers/chat_reducer';
 
 export default createStore (
     combineReducers ({
-        chatDetailsReducer
+        chatReducer
     }),
     {},
     applyMiddleware(logger, thunk, promise())
