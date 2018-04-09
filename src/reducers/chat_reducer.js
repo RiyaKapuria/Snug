@@ -1,4 +1,4 @@
-import { chat_details, CONVERSATION_DETAILS } from '../actions/chat_action';
+import { chat_details, conversation_details } from '../actions/chat_action';
 
 const INITIAL_STATE = { chat_details: null , conversation_details: null};
 
@@ -11,7 +11,7 @@ const chatReducer = (state = {
         ...state,
         chat_details: action.payload
       };
-    case "CONVERSATION_DETAILS":
+    case "conversation_details":
       return {
         ...state,
         conversation_details: action.payload

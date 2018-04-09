@@ -52,7 +52,7 @@ class SideBar extends Component {
                 <ul className="treeview-menu">
                 {fridens.map((values,key) => {
                   return(
-                  <li key={key}><Link to="/Chats"><i className="fa fa-circle-o"></i> {values}</Link></li>
+                  <li key={key}><Link to="/Conversation"><i className="fa fa-circle-o"></i> {values}</Link></li>
                   )
                 })}
                 </ul>

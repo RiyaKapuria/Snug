@@ -30,7 +30,7 @@ class ProfileTab extends Component {
           </li>
           <li className="user-footer">
             <div className="pull-left">
-              <Link to="/Chats" className="btn btn-default btn-flat">Profile</Link>
+              <a className="btn btn-default btn-flat">Logout</a>
             </div>
           </li>
         </ul>
