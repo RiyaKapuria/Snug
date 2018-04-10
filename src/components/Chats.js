@@ -27,32 +27,30 @@ class Chats extends Component {
           <PageLoading />
           :
           <div>
-            {friends.map((values,key) => {
+            {friends.map((val,key) => {
               return(
                 <div key={key}>
-                  {values.id === chat_details ?
-                    <div>{values.firstname} {values.lastname}</div>
-                    : <div>{values.id}</div>
-                  }
+                  {chat_details.map((values,key) => {
+                    return(
+                      <div key={key}>
+                        {val.id === values ?
+                          <div>
+                            <p>Friends: {val.firstname} {val.lastname}</p>
+                              {conversation_details.map((val,k) => {
+                                return(
+                                  <p k={k}>{val.message}</p>
+                                )
+                              })}
+                          </div>
+                          : null
+                        }
+                     </div>
+                    )
+                  })}
                 </div>
                 : null
               )
             })}
-            <div>
-            {chat_details.map((values,key) => {
-              return(
-                <div key={key}>
-
-                  <p>Friend: {values}</p>
-                    {conversation_details.map((val,k) => {
-                      return(
-                        <p k={k}>{val.message}</p>
-                      )
-                    })}
-                </div>
-              )
-            })}
-            </div>
           </div>
           }
         </div>
