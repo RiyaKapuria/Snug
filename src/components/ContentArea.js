@@ -3,6 +3,7 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 
 import Chats from './Chats';
 import Conversation from './Conversation';
+import NewMessage from './NewMessage';
 import { Error404 } from  './Error/Error404';
 
 class ContentArea extends Component {
@@ -13,6 +14,7 @@ class ContentArea extends Component {
           <Route exact path='/' render={() => (<Redirect to='/Chats' />)} />
           <Route path={'/Chats'} component={Chats} />
           <Route path={'/Conversation'} component={Conversation} />
+          <Route path={'/NewMessage'} component={NewMessage} />
           <Route path={'*'} component={Error404} />
         </Switch>
       </div>

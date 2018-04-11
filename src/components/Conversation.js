@@ -1,16 +1,44 @@
 import React,{Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 import PageLoading from './PageLoading';
-import { chatDetails, conversationDetails } from '../actions/chat_action';
+import { chatDetails, conversationDetails, messageSend } from '../actions/chat_action';
 
 
 class Conversation extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fields:{message: ''}
+    }
+  }
+
   componentDidMount() {
     this.props.chatDetails();
     this.props.conversationDetails();
-   }
+  }
+
+   //Input change
+   onChange(message, e) {
+     let fields = this.state.fields;
+     fields[message] = e.target.value;
+     this.setState({fields});
+
+    }
+
+    //Send
+    onSend() {
+     const {messageSend} = this.props;
+     messageSend({
+       from: 1,
+       to: this.props.location.state.friendId,
+       message: this.state.fields["message"],
+       sent_at: moment(new Date()).format("MMM Do YY HH:mm")
+     })
+    }
+
 
   render() {
     let chat_details =
@@ -20,7 +48,6 @@ class Conversation extends Component {
     let conversation_details =
     (this.props.chatReducer && this.props.chatReducer.conversation_details) ?
     this.props.chatReducer.conversation_details.messages : [];
-    console.log("??????????",chat_details);
     return (
       <div>
         { chat_details.length <= 0 ?
@@ -33,7 +60,7 @@ class Conversation extends Component {
                   {chat_details.map((values,key) => {
                     return(
                       <div key={key}>
-                        {val.id === values ?
+                        {(val.id === values && this.props.location.state.friendId === values) ?
                           <div>
                             <h3 className="box-title">Conversation with {val.firstname} {val.lastname}</h3>
                               <div className="box-tools pull-right">
@@ -82,9 +109,21 @@ class Conversation extends Component {
                               <div className="box-footer">
                                 <form action="#" method="post">
                                   <div className="input-group">
-                                    <input type="text" name="message" placeholder="Type Message ..." className="form-control" />
+                                    <input
+                                      type="text"
+                                      name="message"
+                                      placeholder="Type Message ..."
+                                      className="form-control"
+                                      value={this.state.fields["message"]}
+                                      onChange={this.onChange.bind(this, "message")}
+                                    />
                                     <span className="input-group-btn">
-                                      <button type="button" className="btn btn-warning btn-flat">Send</button>
+                                      <button
+                                        type="button"
+                                        className="btn btn-warning btn-flat"
+                                        onClick={this.onSend.bind(this)}>
+                                      Send
+                                    </button>
                                     </span>
                                   </div>
                                 </form>
@@ -119,6 +158,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     conversationDetails: ( conversation_details ) => {
       dispatch(conversationDetails(conversation_details))
+    },
+    messageSend: ( message_send ) => {
+      dispatch(messageSend(message_send))
     }
   };
 };

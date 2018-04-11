@@ -34,11 +34,11 @@ class Chats extends Component {
                       <div key={key}>
                         {val.id === values ?
                           <div style={{backgroundColor: "#d2d6de"}}>
-                              {conversation_details.map((valu,key) => {
+                              {conversation_details.map((valu,k) => {
                                 return(
                                   <div>
                                     {(valu.to === values || valu.from === values) && (valu.msg_id === 3 || valu.msg_id === 4) ?
-                                      <ul className="contacts-list" key={key}>
+                                      <ul className="contacts-list" key={k}>
                                         <li>
                                           <Link to="/Conversation">
                                             <img className="contacts-list-img" src="dist/img/avatar4.png" alt="User Image" />

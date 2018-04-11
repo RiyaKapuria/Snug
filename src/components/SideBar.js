@@ -53,12 +53,12 @@ class SideBar extends Component {
                 {fridens.map((values,key) => {
                   return(
                   <li key={key}>
-                    <Link to="/Conversation">
+                    <Link to={{pathname: '/Conversation',state: {friendId: values}}}>
                       {chat_details.map((val,key) => {
                         return(
                           <div>
                             {values === val.id ?
-                              <div><i className="fa fa-circle-o"></i>&emsp;{val.firstname}</div>
+                              <div><i className="fa fa-circle-o"></i>&emsp;{val.firstname}&emsp; ID: {val.id}</div>
                               : null
                               }
                          </div>
@@ -71,7 +71,7 @@ class SideBar extends Component {
                 </ul>
               </li>
             <li>
-              <Link to="/New_Message">
+              <Link to="/NewMessage">
                 <i className="fa fa-comments"></i> <span> New Message</span>
               </Link>
             </li>
