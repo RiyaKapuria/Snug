@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import moment from 'moment';
 
 import PageLoading from './PageLoading';
 import { chatDetails, messageSend } from '../actions/chat_action';
@@ -47,7 +46,7 @@ class NewMessage extends Component {
        from: 1,
        to: this.state.fields.to,
        message: this.state.fields.message,
-       sent_at: moment(new Date()).format("MMM Do YY HH:mm")
+       sent_at: new Date()
      })
     }
 

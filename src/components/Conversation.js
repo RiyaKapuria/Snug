@@ -35,7 +35,7 @@ class Conversation extends Component {
        from: 1,
        to: this.props.location.state.friendId,
        message: this.state.fields["message"],
-       sent_at: moment(new Date()).format("MMM Do YY HH:mm")
+       sent_at: new Date()
      })
     }
 
@@ -79,7 +79,7 @@ class Conversation extends Component {
                                             <div className="direct-chat-msg">
                                               <div className="direct-chat-info clearfix">
                                                 <span className="direct-chat-name pull-left">{val.firstname}</span>
-                                                <span className="direct-chat-timestamp pull-right">{valu.sent_at}</span>
+                                                <span className="direct-chat-timestamp pull-right">{moment(valu.sent_at).format("ll")}</span>
                                               </div>
                                               <img className="direct-chat-img" src="dist/img/avatar4.png" />
                                               <div className="direct-chat-text">{valu.message}</div>

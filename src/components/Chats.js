@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 import PageLoading from './PageLoading';
 import { chatDetails, conversationDetails } from '../actions/chat_action';
@@ -11,6 +12,7 @@ class Chats extends Component {
     this.props.chatDetails();
     this.props.conversationDetails();
    }
+
 
   render() {
     let chat_details =
@@ -40,12 +42,12 @@ class Chats extends Component {
                                     {(valu.to === values || valu.from === values) && (valu.msg_id === 3 || valu.msg_id === 4) ?
                                       <ul className="contacts-list" key={k}>
                                         <li>
-                                          <Link to="/Conversation">
+                                          <Link to={{pathname: '/Conversation',state: {friendId: values}}}>
                                             <img className="contacts-list-img" src="dist/img/avatar4.png" alt="User Image" />
                                             <div className="contacts-list-info">
                                               <span className="contacts-list-name">
                                                 {val.firstname} {val.lastname}
-                                                <small className="contacts-list-date pull-right">{valu.sent_at}</small>
+                                                <small className="contacts-list-date pull-right">{moment(valu.sent_at).format("ll")}</small>
                                               </span>
                                               <span className="contacts-list-msg">{valu.message}</span>
                                             </div>
