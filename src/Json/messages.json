@@ -3,14 +3,30 @@
            {
              "from": 1,
              "to": 3,
+             "msg_id": 1,
              "message": "hiiiiiii",
-             "sent at" : "sun 23"
+             "sent_at" : "23 Jan 2:00 pm"
            },
           {
             "from": 1,
              "to": 2,
+             "msg_id": 2,
              "message": "hello",
-             "sent at" : "sun 23"
-           }
+             "sent_at" : "25 Jan 12:00 pm"
+           },
+           {
+             "from": 2,
+              "to": 1,
+              "msg_id": 3,
+              "message": "Hi riya",
+              "sent_at" : "26 Jan 4:00 pm"
+            },
+            {
+              "from": 3,
+               "to": 1,
+               "msg_id": 4,
+               "message": "Good Morning!",
+               "sent_at" : "27 Jan 6:00 pm"
+             }
   ]
 }

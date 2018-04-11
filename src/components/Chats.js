@@ -20,25 +20,41 @@ class Chats extends Component {
     let conversation_details =
     (this.props.chatReducer && this.props.chatReducer.conversation_details) ?
     this.props.chatReducer.conversation_details.messages : [];
-    console.log("??????????",chat_details);
     return (
       <div>
         { chat_details.length <= 0 ?
           <PageLoading />
           :
-          <div>
+          <div className="box direct-chat">
             {friends.map((val,key) => {
               return(
-                <div key={key}>
+                <div key={key} className="box-header with-border">
                   {chat_details.map((values,key) => {
                     return(
                       <div key={key}>
                         {val.id === values ?
-                          <div>
-                            <p>Friends: {val.firstname} {val.lastname}</p>
-                              {conversation_details.map((val,k) => {
+                          <div style={{backgroundColor: "#d2d6de"}}>
+                              {conversation_details.map((valu,key) => {
                                 return(
-                                  <p k={k}>{val.message}</p>
+                                  <div>
+                                    {(valu.to === values || valu.from === values) && (valu.msg_id === 3 || valu.msg_id === 4) ?
+                                      <ul className="contacts-list" key={key}>
+                                        <li>
+                                          <Link to="/Conversation">
+                                            <img className="contacts-list-img" src="dist/img/avatar4.png" alt="User Image" />
+                                            <div className="contacts-list-info">
+                                              <span className="contacts-list-name">
+                                                {val.firstname} {val.lastname}
+                                                <small className="contacts-list-date pull-right">{valu.sent_at}</small>
+                                              </span>
+                                              <span className="contacts-list-msg">{valu.message}</span>
+                                            </div>
+                                          </Link>
+                                        </li>
+                                      </ul>
+                                      : null
+                                    }
+                                  </div>
                                 )
                               })}
                           </div>

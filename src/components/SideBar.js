@@ -46,20 +46,33 @@ class SideBar extends Component {
                 <a href="#">
                   <i className="fa fa-user"></i> <span> My Contacts</span>
                     <span className="pull-right-container">
-                      <span className="label label-primary pull-right">2</span>
+                      <span className="label label-primary pull-right">{fridens.length}</span>
                     </span>
                 </a>
                 <ul className="treeview-menu">
                 {fridens.map((values,key) => {
                   return(
-                  <li key={key}><Link to="/Conversation"><i className="fa fa-circle-o"></i> {values}</Link></li>
+                  <li key={key}>
+                    <Link to="/Conversation">
+                      {chat_details.map((val,key) => {
+                        return(
+                          <div>
+                            {values === val.id ?
+                              <div><i className="fa fa-circle-o"></i>&emsp;{val.firstname}</div>
+                              : null
+                              }
+                         </div>
+                        )
+                      })}
+                    </Link>
+                  </li>
                   )
                 })}
                 </ul>
               </li>
             <li>
               <Link to="/New_Message">
-                <i className="fa fa-dashboard"></i> <span> New Message</span>
+                <i className="fa fa-comments"></i> <span> New Message</span>
               </Link>
             </li>
           </ul>
